@@ -40,46 +40,50 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   })
 })
 
-// Contact form handling
-const contactForm = document.getElementById("contact-form")
+// Contact form handling with EmailJS (cleaned & deduplicated)
+window.addEventListener("DOMContentLoaded", () => {
+  const contactForm = document.getElementById("contact-form")
+  const submitButton = contactForm.querySelector('button[type="submit"]')
 
-contactForm.addEventListener("submit", function (e) {
-  e.preventDefault()
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault()
 
-  // Get form data
-  const formData = new FormData(this)
-  const firstName = formData.get("firstName")
-  const lastName = formData.get("lastName")
-  const email = formData.get("email")
-  const subject = formData.get("subject")
-  const message = formData.get("message")
+    const formData = new FormData(this)
+    const firstName = formData.get("firstName")
+    const lastName = formData.get("lastName")
+    const email = formData.get("email")
+    const subject = formData.get("subject")
+    const message = formData.get("message")
 
-  // Simple validation
-  if (!firstName || !lastName || !email || !subject || !message) {
-    alert("Please fill in all fields")
-    return
-  }
+    if (!firstName || !lastName || !email || !subject || !message) {
+      alert("Please fill in all fields")
+      return
+    }
 
-  // Email validation
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  if (!emailRegex.test(email)) {
-    alert("Please enter a valid email address")
-    return
-  }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address")
+      return
+    }
 
-  // Simulate form submission
-  const submitButton = this.querySelector('button[type="submit"]')
-  const originalText = submitButton.innerHTML
+    const originalText = submitButton.innerHTML
+    submitButton.innerHTML = "Sending..."
+    submitButton.disabled = true
 
-  submitButton.innerHTML = "Sending..."
-  submitButton.disabled = true
-
-  setTimeout(() => {
-    alert("Thank you for your message! I'll get back to you soon.")
-    this.reset()
-    submitButton.innerHTML = originalText
-    submitButton.disabled = false
-  }, 2000)
+    emailjs.sendForm("service_oippim9", "template_czbuvn9", contactForm)
+      .then(() => {
+        alert("Thank you for your message! I'll get back to you soon.")
+        contactForm.reset()
+      })
+      .catch((error) => {
+        console.error("EmailJS error:", error)
+        alert("Oops! Something went wrong. Please try again.")
+      })
+      .finally(() => {
+        submitButton.innerHTML = originalText
+        submitButton.disabled = false
+      })
+  })
 })
 
 // Intersection Observer for animations
@@ -97,7 +101,6 @@ const observer = new IntersectionObserver((entries) => {
   })
 }, observerOptions)
 
-// Observe elements for animation
 document
   .querySelectorAll(".feature-card, .skill-card, .project-card, .experience-card, .contact-card")
   .forEach((el) => {
@@ -107,22 +110,20 @@ document
     observer.observe(el)
   })
 
-// Add hover effects for project images
+// Hover effects for project images
 document.querySelectorAll(".project-image img").forEach((img) => {
   img.addEventListener("mouseenter", function () {
     this.style.transform = "scale(1.05)"
   })
-
   img.addEventListener("mouseleave", function () {
     this.style.transform = "scale(1)"
   })
 })
 
-// Typing effect for hero title (optional enhancement)
+// Typing effect for hero title
 function typeWriter(element, text, speed = 100) {
   let i = 0
   element.innerHTML = ""
-
   function type() {
     if (i < text.length) {
       element.innerHTML += text.charAt(i)
@@ -130,11 +131,9 @@ function typeWriter(element, text, speed = 100) {
       setTimeout(type, speed)
     }
   }
-
   type()
 }
 
-// Initialize typing effect when page loads
 window.addEventListener("load", () => {
   const heroTitle = document.querySelector(".hero-title")
   if (heroTitle) {
@@ -143,28 +142,26 @@ window.addEventListener("load", () => {
   }
 })
 
-// Add loading animation
+// Loading animation
 window.addEventListener("load", () => {
   document.body.style.opacity = "0"
   document.body.style.transition = "opacity 0.5s ease"
-
   setTimeout(() => {
     document.body.style.opacity = "1"
   }, 100)
 })
 
-// Parallax effect for hero background
+// Parallax effect
 window.addEventListener("scroll", () => {
   const scrolled = window.pageYOffset
   const heroBlurs = document.querySelectorAll(".hero-blur")
-
   heroBlurs.forEach((blur, index) => {
     const speed = 0.5 + index * 0.2
     blur.style.transform = `translateY(${scrolled * speed}px)`
   })
 })
 
-// Add click effects to buttons
+// Button ripple effect
 document.querySelectorAll(".btn").forEach((button) => {
   button.addEventListener("click", function (e) {
     const ripple = document.createElement("span")
@@ -179,35 +176,35 @@ document.querySelectorAll(".btn").forEach((button) => {
     ripple.classList.add("ripple")
 
     this.appendChild(ripple)
-
     setTimeout(() => {
       ripple.remove()
     }, 600)
   })
 })
 
-// Add ripple effect styles
-const style = document.createElement("style")
-style.textContent = `
-    .btn {
-        position: relative;
-        overflow: hidden;
+// Inject ripple animation style
+const rippleStyle = document.createElement("style")
+rippleStyle.textContent = `
+  .btn {
+    position: relative;
+    overflow: hidden;
+  }
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple-animation 0.6s linear;
+    pointer-events: none;
+  }
+  @keyframes ripple-animation {
+    to {
+      transform: scale(4);
+      opacity: 0;
     }
-    
-    .ripple {
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.3);
-        transform: scale(0);
-        animation: ripple-animation 0.6s linear;
-        pointer-events: none;
-    }
-    
-    @keyframes ripple-animation {
-        to {
-            transform: scale(4);
-            opacity: 0;
-        }
-    }
+  }
 `
-document.head.appendChild(style)
+document.head.appendChild(rippleStyle)
+
+// EmailJS Init
+emailjs.init("rFJyRzT5p4UUoLYJd")
