@@ -1446,3 +1446,110 @@ transform: translateY(-2px);
 
 /* Transform */
 .transform { transform: translateZ(0); }
+
+.contact .heading {
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #ffffff;
+}
+
+.contact .heading span {
+  background: linear-gradient(135deg, #8b5cf6, #06b6d4, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.contact form {
+  background: linear-gradient(135deg, rgba(22, 33, 62, 0.85), rgba(15, 52, 96, 0.75));
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-shadow: 0 0 40px rgba(139, 92, 246, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+.contact .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact .field {
+  position: relative;
+}
+
+.contact .field input,
+.contact .message textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  padding-left: 2.5rem;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: #ffffff;
+  backdrop-filter: blur(10px);
+}
+
+.contact .field input::placeholder,
+.contact .message textarea::placeholder {
+  color: #94a3b8;
+}
+
+.contact .field input:focus,
+.contact .message textarea:focus {
+  outline: none;
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+
+.contact .field i,
+.contact .message i {
+  position: absolute;
+  top: 50%;
+  left: 0.75rem;
+  transform: translateY(-50%);
+  color: #8b5cf6;
+  font-size: 1rem;
+}
+
+.contact .message {
+  position: relative;
+}
+
+.contact .message textarea {
+  min-height: 150px;
+  resize: vertical;
+  padding-top: 0.75rem;
+}
+
+.contact .button-area {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.contact button[type="submit"] {
+  background: linear-gradient(135deg, #8b5cf6, #a855f7, #06b6d4, #10b981);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+.contact button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+}

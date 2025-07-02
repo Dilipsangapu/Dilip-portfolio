@@ -49,13 +49,12 @@ window.addEventListener("DOMContentLoaded", () => {
     e.preventDefault()
 
     const formData = new FormData(this)
-    const firstName = formData.get("firstName")
-    const lastName = formData.get("lastName")
+    const Name = formData.get("Name")
     const email = formData.get("email")
     const subject = formData.get("subject")
     const message = formData.get("message")
 
-    if (!firstName || !lastName || !email || !subject || !message) {
+    if (!Name || !email || !subject || !message) {
       alert("Please fill in all fields")
       return
     }
@@ -70,19 +69,7 @@ window.addEventListener("DOMContentLoaded", () => {
     submitButton.innerHTML = "Sending..."
     submitButton.disabled = true
 
-    emailjs.sendForm("service_oippim9", "template_czbuvn9", contactForm)
-      .then(() => {
-        alert("Thank you for your message! I'll get back to you soon.")
-        contactForm.reset()
-      })
-      .catch((error) => {
-        console.error("EmailJS error:", error)
-        alert("Oops! Something went wrong. Please try again.")
-      })
-      .finally(() => {
-        submitButton.innerHTML = originalText
-        submitButton.disabled = false
-      })
+   
   })
 })
 
@@ -206,5 +193,15 @@ rippleStyle.textContent = `
 `
 document.head.appendChild(rippleStyle)
 
-// EmailJS Init
-emailjs.init("rFJyRzT5p4UUoLYJd")
+
+
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/68652fd5ac5c12190c3ee121/1iv5k5nbn';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+

@@ -718,43 +718,43 @@
                     
                 </div>
                 
-                <div class="contact-form-container">
-  <div class="contact-form-card">
-    <h3 class="form-title">Send Message</h3>
-    <form class="contact-form" id="contact-form">
-  <div class="form-row">
-    <div class="form-group">
-      <label for="firstName">First Name</label>
-      <input type="text" id="firstName" name="firstName" placeholder="S Dilip" required>
-    </div>
-    <div class="form-group">
-      <label for="lastName">Last Name</label>
-      <input type="text" id="lastName" name="lastName" placeholder="Chowdary" required>
-    </div>
-  </div>
+                
   
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" placeholder="mail@gmail.com" required>
-  </div>
+<!-- contact section starts -->
+<section class="contact" id="contact">
 
-  <div class="form-group">
-    <label for="subject">Subject</label>
-    <input type="text" id="subject" name="subject" placeholder="Subject" required>
-  </div>
+    <h2 class="heading "><i class="fas fa-headset "></i> Get in <span>Touch</span></h2>
 
-  <div class="form-group">
-    <label for="message">Message</label>
-    <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
-  </div>
-
-  <button type="submit" class="btn btn-primary btn-full">
-    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-    </svg>
-    Send Message
-  </button>
-</form>
+    <div class="container ">
+        <div class="content ">
+          
+            <form action="https://formspree.io/f/xrbkdbew"method="POST">
+                <div class="form-group">
+                    <div class="field">
+                        <input type="text" name="name" placeholder="Name" required>
+                        <i class='fas fa-user'></i>
+                    </div>
+                    <div class="field">
+                        <input type="email" name="email" placeholder="Email" required>
+                        <i class='fas fa-envelope'></i>
+                    </div>
+                    <div class="field">
+                        <input type="text" name="phone" placeholder="Phone">
+                        <i class='fas fa-phone-alt'></i>
+                    </div>
+                    <div class="message">
+                        <textarea name="message" placeholder="Message" required></textarea>
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+                </div>
+                <div class="button-area">
+                    <button type="submit">
+                        Submit <i class="fa fa-paper-plane"></i>
+                    </button>
+                </div>
+            </form>
+                </section>
+<!-- contact section ends -->
 
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
