@@ -2127,3 +2127,55 @@ hr {
   .about-photo-frame { width: 180px; }
   .about-photo-img   { height: 220px; }
 }
+
+
+
+ /* ── Skill icon SVG override ── */
+        .skill-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            padding: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .skill-icon svg { width: 100%; height: 100%; }
+        .skill-card:hover .skill-icon { transform: scale(1.12) rotate(-3deg); }
+        .skill-icon-frontend  { background: rgba(247,223,30,0.1);  box-shadow: 0 0 18px rgba(247,223,30,0.18); }
+        .skill-icon-backend   { background: rgba(109,179,63,0.1);  box-shadow: 0 0 18px rgba(109,179,63,0.18); }
+        .skill-icon-devops    { background: rgba(244,209,68,0.1);  box-shadow: 0 0 18px rgba(244,209,68,0.18); }
+        .skill-icon-languages { background: rgba(83,130,161,0.12); box-shadow: 0 0 18px rgba(83,130,161,0.2);  }
+        .skill-icon-database  { background: rgba(71,162,72,0.1);   box-shadow: 0 0 18px rgba(71,162,72,0.18);  }
+
+        /* Avatar */
+        .avatar-wrapper{position:relative;width:100%;height:100%;border-radius:50%;z-index:2;display:flex;align-items:center;justify-content:center}
+        .avatar-svg{width:100%;height:100%;border-radius:50%;overflow:hidden;filter:drop-shadow(0 0 24px rgba(244,209,68,0.3));transition:filter .5s ease}
+        .image-container:hover .avatar-svg{filter:drop-shadow(0 0 40px rgba(244,209,68,0.55))}
+        .image-container{animation:avatarFloat 5s ease-in-out infinite !important;transform-style:preserve-3d}
+        @keyframes avatarFloat{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-8px) rotate(.5deg)}75%{transform:translateY(4px) rotate(-.5deg)}}
+        @keyframes avatarBlink{0%,90%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
+        .avatar-eye-lid{transform-origin:center 50%;animation:avatarBlink 4.5s ease-in-out infinite}
+        .avatar-eye-lid-r{animation-delay:.08s}
+        @keyframes hairSway{0%,100%{transform:skewX(0)}50%{transform:skewX(1.5deg)}}
+        .avatar-hair{animation:hairSway 3s ease-in-out infinite;transform-origin:top center}
+        @keyframes mouthBreath{0%,100%{transform:scaleX(1) scaleY(1)}50%{transform:scaleX(1.04) scaleY(.9)}}
+        .avatar-mouth{animation:mouthBreath 3.5s ease-in-out infinite;transform-origin:center}
+        @keyframes earGlow{0%,100%{opacity:.6}50%{opacity:1}}
+        .avatar-earring{animation:earGlow 2s ease-in-out infinite}
+
+        /* About photo */
+        .about-content{grid-template-columns:auto 1fr 1fr !important;gap:3rem !important;align-items:start !important}
+        .about-photo{display:flex;justify-content:center;align-items:flex-start}
+        .about-photo-frame{position:relative;width:220px;flex-shrink:0}
+        .about-photo-glow{position:absolute;inset:-18px;background:conic-gradient(from 0deg,rgba(244,209,68,.3),rgba(255,230,128,.1),rgba(200,168,32,.25),rgba(244,209,68,.3));border-radius:18px;filter:blur(22px);opacity:.7;z-index:0}
+        .about-photo-frame::before{content:'';position:absolute;inset:-3px;border-radius:18px;background:conic-gradient(from 0deg,#8a6e0e,#f4d144,#ffe680,#c8a820,#8a6e0e,#f4d144,#8a6e0e);animation:spinRing 12s linear infinite;z-index:0}
+        .about-photo-frame::after{content:'';position:absolute;inset:-1px;border-radius:17px;background:#0d0d0d;z-index:1}
+        .about-photo-img{position:relative;width:100%;height:290px;object-fit:cover;object-position:top center;border-radius:16px;z-index:2;display:block;filter:contrast(1.05) saturate(.92);transition:filter .5s ease,transform .5s ease}
+        .about-photo-frame:hover .about-photo-img{filter:contrast(1.08) saturate(1.1);transform:scale(1.02)}
+        .about-photo-badge{position:absolute;bottom:-14px;right:-14px;z-index:3;background:rgba(13,13,13,.95);border:1px solid rgba(244,209,68,.4);border-radius:10px;padding:.5rem .9rem;display:flex;align-items:center;gap:.4rem;font-size:.68rem;font-weight:700;color:#f4d144;letter-spacing:.08em;text-transform:uppercase;backdrop-filter:blur(12px);box-shadow:0 4px 20px rgba(244,209,68,.2);animation:pulseBorder 3.5s ease-in-out infinite;white-space:nowrap}
+        .about-photo-badge svg{width:14px;height:14px;stroke:#f4d144;flex-shrink:0}
+        @media(max-width:1024px){.about-content{grid-template-columns:1fr 1fr !important}.about-photo{grid-column:1/-1;justify-content:center}.about-photo-frame{width:200px}.about-photo-img{height:250px}.about-text{grid-column:1/-1}}
+        @media(max-width:768px){.about-content{grid-template-columns:1fr !important}.about-photo-frame{width:180px}.about-photo-img{height:220px}}
